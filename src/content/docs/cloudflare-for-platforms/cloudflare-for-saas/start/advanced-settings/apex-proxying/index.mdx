@@ -31,6 +31,14 @@ This means then that customers can create a standard `A` record to route traffic
 
 [^1]: Cloudflare offers this functionality through [CNAME flattening](/dns/cname-flattening/).
 
+## How it works
+
+Apex proxying works by creating [address maps](/byoip/address-maps/) that map your customers' apex domains to IP addresses assigned to your account. When a customer creates an `A` record pointing to one of these IPs, Cloudflare routes the traffic to your SaaS zone.
+
+:::caution
+Do not manually modify the address maps that apex proxying creates. If your account also uses address maps for other purposes (for example, [BYOIP](/byoip/)), keep those configurations separate. Mixing manually created address maps with apex proxying configurations can cause routing conflicts.
+:::
+
 ## Setup
 
 - [Set up Apex Proxying](/cloudflare-for-platforms/cloudflare-for-saas/start/advanced-settings/apex-proxying/setup/)
